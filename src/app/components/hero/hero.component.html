@@ -1,0 +1,302 @@
+<!-- Hero Section  -->
+<section class="hero-section">
+  <div class="hero-container container">
+    <h1 class="hero-heading">About Abhishek</h1>
+    <div class="hero-content">
+      <div class="hero-content-left">
+        <div class="author-image">
+          <img
+            src="../../../assets/images/abhishek.jpg"
+            alt="Abhishek's Image"
+          />
+        </div>
+        <p class="hero-paragraph">
+          Hello, I am a professional web developer with 6 years of experience in
+          the industry. I have worked on various projects that have
+          significantly impacted people's lives on a daily basis. My tech stacks
+          include HTML, CSS, SCSS, JavaScript, JQuery, Angular, React, Node.js,
+          Docker
+          <span id="dotSpan">...</span>
+          <span class="restcontent" id="restContentId">
+            My passion is to create functional, user-friendly web applications
+            that are not only visually appealing but also provide a seamless
+            user experience. I am always eager to learn new technologies and
+            stay updated with the latest trends in the web development industry.
+          </span>
+          <span
+            id="readmoreId"
+            class="readmoreClass"
+            (click)="changeReadMore()"
+          >
+            Read More
+          </span>
+        </p>
+      </div>
+      <div class="hero-content-right">
+        <!-- Login Form -->
+        <div class="login-form" *ngIf="showLogin">
+          <h2 class="form-heading">Login</h2>
+          <form (ngSubmit)="onSubmitLogin()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                [(ngModel)]="username"
+                required
+                placeholder="Enter Username"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                [(ngModel)]="password"
+                required
+                placeholder="Enter Password"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Log in</button>
+          </form>
+          <p>
+            Don't have an account?
+            <a (click)="showLogin = !showLogin">Register</a>
+          </p>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="registration-form" *ngIf="!showLogin">
+          <h2 class="form-heading">Registration</h2>
+          <form
+            [formGroup]="registrationForm"
+            (ngSubmit)="onSubmitRegistration()"
+          >
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                formControlName="name"
+                placeholder="Enter Name"
+                [ngClass]="{
+                  error:
+                    registrationForm.get('name')?.hasError('required') &&
+                    registrationForm.get('name')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registrationForm.get('name')?.hasError('required') &&
+                  registrationForm.get('name')?.touched
+                "
+                class="error-message"
+              >
+                Name is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                formControlName="email"
+                placeholder="Enter Email"
+                [ngClass]="{
+                  error:
+                    registrationForm.get('email')?.hasError('required') &&
+                    registrationForm.get('email')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registrationForm.get('email')?.hasError('required') &&
+                  registrationForm.get('email')?.touched
+                "
+                class="error-message"
+              >
+                Email is required
+              </div>
+              <div
+                *ngIf="
+                  registrationForm.get('email')?.hasError('email') &&
+                  registrationForm.get('email')?.touched
+                "
+                class="error-message"
+              >
+                Email is invalid
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                formControlName="password"
+                placeholder="Enter Password"
+                [ngClass]="{
+                  error:
+                    registrationForm.get('password')?.hasError('required') &&
+                    registrationForm.get('password')?.touched
+                }"
+              />
+              <div
+                *ngIf="
+                  registrationForm.get('password')?.hasError('required') &&
+                  registrationForm.get('password')?.touched
+                "
+                class="error-message"
+              >
+                Password is required
+              </div>
+              <div
+                *ngIf="
+                  registrationForm.get('password')?.hasError('minlength') &&
+                  registrationForm.get('password')?.touched
+                "
+                class="error-message"
+              >
+                Password must be at least 5 characters
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea
+                id="address"
+                formControlName="address"
+                name="address"
+                placeholder="Enter Address"
+                [ngClass]="{
+                  error:
+                    registrationForm.get('address')?.touched &&
+                    registrationForm.get('address')?.hasError('required')
+                }"
+              ></textarea>
+              <div
+                *ngIf="
+                  registrationForm.get('address')?.hasError('required') &&
+                  registrationForm.get('address')?.touched
+                "
+                class="error-message"
+              >
+                Address is required
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+          </form>
+          <p>
+            Already have an account?
+            <a (click)="showLogin = !showLogin">Log in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Past Experiences -->
+<section class="experiences" id="experiences">
+  <div class="experiences-container container">
+    <h2 class="experiences-heading">Past Experiences</h2>
+    <div class="experiences-cards">
+      <div class="card">
+        <h3>Cognizant Technology Solutions</h3>
+        <p>September 2021 - Present</p>
+        <ul>
+          <li>
+            <span>Project A</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+          <li>
+            <span>Project B</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus.
+          </li>
+          <li>
+            <span>Project C</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+        </ul>
+        <p>
+          Technology Used: <span>HTML, CSS, Javascript, Angular, Node.js</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Bayshore Intelligence Solutions</h3>
+        <p>June 2021 - August 2021</p>
+        <ul>
+          <li>
+            <span>Project D</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+          <li>
+            <span>Project E</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus.
+          </li>
+          <li>
+            <span>Project F</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+        </ul>
+        <p>
+          Technology Used: <span>HTML, CSS, Javascript, Angular, Node.js</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Mass Software Solutions</h3>
+        <p>April 2020 - June 2021</p>
+        <ul>
+          <li>
+            <span>Project G</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+          <li>
+            <span>Project H</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus.
+          </li>
+          <li>
+            <span>Project I</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+        </ul>
+        <p>Technology Used: <span>HTML, CSS, Angular 2.X</span></p>
+      </div>
+
+      <div class="card">
+        <h3>Infosolz Consultancy Services Private Limited</h3>
+        <p>September 2018 - April 2020</p>
+        <ul>
+          <li>
+            <span>Project J</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+          <li>
+            <span>Project K</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus.
+          </li>
+          <li>
+            <span>Project L</span> - Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis, doloribus! Officia iste deleniti placeat
+            repudiandae.
+          </li>
+        </ul>
+        <p>Technology Used: <span>HTML, CSS, PHP</span></p>
+      </div>
+    </div>
+  </div>
+</section>

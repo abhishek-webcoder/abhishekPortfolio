@@ -1,0 +1,61 @@
+<nav class="navbar">
+  <div class="navbar-flex">
+    <div class="logo">
+      <img src="../assets/images/angular-logo.jpg" alt="Skill Logo" />
+    </div>
+    <ul class="navbar-items">
+      <li class="navbar-item">
+        <a routerLink="/hero" routerLinkActive="active">Home</a>
+      </li>
+      <li class="navbar-item">
+        <a routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+      <li class="navbar-item">
+        <a (click)="scrollTo('experiences')">Experiences</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile Menu & Hamburger Icon -->
+  <div class="navbar__mobile-menu">
+    <div class="navbar__mobile-menu-toggle" (click)="showHideMenu()">
+      <i class="fas fa-bars fa-2x"></i>
+    </div>
+    <!-- Mobile Menu Items -->
+    <div class="navbar__mobile-menu-items">
+      <ul class="navbar__mobile-menu-list">
+        <li class="navbar__mobile-menu-item">
+          <a
+            routerLink="/hero"
+            routerLinkActive="active"
+            (click)="showHideMenu()"
+            >Home</a
+          >
+        </li>
+        <li class="navbar__mobile-menu-item">
+          <a
+            routerLink="/about"
+            routerLinkActive="active"
+            (click)="showHideMenu()"
+            >About</a
+          >
+        </li>
+        <li class="navbar__mobile-menu-item">
+          <a (click)="scrollTo('experiences'); showHideMenu()">Experiences</a>
+        </li>
+        <li class="navbar__mobile-menu-item">
+          <a href="#" class="navbar__mobile-menu-link--primary">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </li>
+        <li class="navbar__mobile-menu-item">
+          <a href="#" class="navbar__mobile-menu-link--primary">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

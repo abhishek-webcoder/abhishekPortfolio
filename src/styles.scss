@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #8abff8;
+  --secondary-color: #d5d5d5;
+  --tertiary-color: #f9fafb;
+}
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  color: #000;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+// to stop body scrolling it is independent from rest of the code
+.bodyScrollStop {
+  overflow: hidden;
+}
